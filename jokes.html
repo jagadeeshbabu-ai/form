@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Jokes</title>
+    <link rel="stylesheet" href="random.css"/>
+</head>
+<body>
+    <div class="container">
+        <span>&#128514;</span>
+        <div id="joke">
+        
+
+        </div>
+        <button id="btn" onclick="generateJoke()">Generate Joke</button>
+    </div>
+    <script>
+        const joke = document.getElementById("joke")
+        const btn = document.getElementById("btn")
+        const url ="https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,explicit&type=single"
+        function generateJoke(){
+            fetch(url).then ((data) => data.json())
+            .then((item) => {
+                joke.textContent = `${item.joke}`
+                console.log(item.joke);
+            });
+        }
+
+        
+    </script>
+    
+</body>
+</html>
